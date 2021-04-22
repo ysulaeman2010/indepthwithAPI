@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <img src="" id="cat">
+<script>
+
+    async function catchCat(){
+        const response = await fetch('cat.jpg');
+    }
+    
+    fetch('cat.jpg')
+    .then(response => response.blob())
+    .then(data => {
+        document.getElementById('cat').src = URL.createObjectURL(data);
+    })
+    .catch(error => {
+        console.error(error)
+    })
+    
+</script>
+</body>
+</html>
