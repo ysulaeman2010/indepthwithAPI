@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id='textData'></p>
+<script>
+    const data = 'text.txt';
+
+    getData(data)
+    .then(response => {
+        document.getElementById('textData').innerText = response;
+    })
+    
+    async function getData(url){
+        const dataText = await fetch(url);
+        return await dataText.text();
+    }
+
+</script>
+</body>
+</html>

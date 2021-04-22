@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    const catDatas = [
+        'source/cat1.png',
+        'source/cat2.jpg'
+    ];
+
+    getCat(catDatas)
+    .then(response => console.log('success!'))
+    .catch(error => console.error(error));
+
+    async function getCat(data){
+        for(let datas of data){
+            const response = await fetch(datas);
+            const blob = await response.blob();
+            const img = document.createElement('img');
+            img.src = URL.createObjectURL(blob);
+            img.width = '200';
+            document.body.append(img)
+        }
+    }
+</script>
+</body>
+</html>
