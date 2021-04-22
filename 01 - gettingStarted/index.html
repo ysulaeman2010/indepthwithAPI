@@ -9,19 +9,27 @@
 <body>
     <img src="" id="cat">
 <script>
+    /* using async-await function */
+    const data = 'cat.jpg';
 
-    async function catchCat(){
-        const response = await fetch('cat.jpg');
+    async function catchCat(url){
+        const response = await fetch(url);
+        const blob = await response.blob();
+        document.getElementById('cat').src = URL.createObjectURL(blob);
     }
+
+    catchCat(data);
     
-    fetch('cat.jpg')
+    /* using only fetch */
+    
+     /* fetch('cat.jpg')
     .then(response => response.blob())
     .then(data => {
         document.getElementById('cat').src = URL.createObjectURL(data);
     })
     .catch(error => {
         console.error(error)
-    })
+    }) */
     
 </script>
 </body>
